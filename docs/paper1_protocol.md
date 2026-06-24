@@ -41,7 +41,8 @@ Compute the following candidate regions:
 
 ### Features
 
-For each case and region:
+For each case and region, predictor features must be computable without
+ground-truth masks at deployment time:
 
 - area ratio;
 - mean entropy;
@@ -50,9 +51,19 @@ For each case and region:
 - distance to nearest object boundary;
 - connected-component count;
 - compactness;
-- false-positive ratio;
-- false-negative ratio;
 - object fragmentation score.
+
+### No-Leakage Rule
+
+Ground-truth masks must not be used to construct predictor features for
+test-time reliability estimation. Ground truth can only be used for:
+
+1. defining training targets;
+2. evaluating whether a predicted failure region corresponds to a real error;
+3. oracle upper-bound analysis clearly marked as non-deployable.
+
+False-positive and false-negative regions are therefore evaluation targets, not
+deployable input features.
 
 ### Prediction Targets
 
@@ -98,4 +109,3 @@ pipeline is stable.
 
 Do not include ChatGPT or other large language models in Paper 1. The paper must
 remain an image-centered reliability study.
-
