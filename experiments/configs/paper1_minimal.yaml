@@ -1,0 +1,22 @@
+project: failure_region_reliability
+experiment: paper1_minimal_failure_region_reliability
+
+data:
+  dataset: TBD
+  split_file: data/splits/TBD.json
+  prediction_dir: TBD
+
+regions:
+  uncertainty_quantile: 0.85
+  boundary_radius_px: 3
+
+evaluation:
+  bad_case_metric: dice
+  bad_case_threshold: 0.75
+  metrics:
+    - dice
+    - boundary_dice
+    - hd95
+    - auroc_bad_case
+    - auprc_bad_case
+

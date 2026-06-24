@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Data and large outputs
+data/raw/
+data/processed/
+experiments/runs/
+outputs/
+*.nii
+*.nii.gz
+*.mha
+*.nrrd
+*.svs
+*.tif
+*.tiff
+*.h5
+*.pth
+*.pt
+*.ckpt
+
+# Office/PDF exports
+~$*
+*.tmp
+
