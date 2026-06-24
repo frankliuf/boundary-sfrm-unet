@@ -20,6 +20,10 @@
   audit, and inter-observer ambiguity discussion.
 - Set the next execution decision: run feature-discrimination validation before
   training the full reliability predictor.
+- Chose MoNuSeg test patches as the first audit dataset because checkpoints and
+  per-patch metrics already exist locally. CoNSeP will be the second pathology
+  validation dataset; a non-pathology dataset should be added only after the
+  MoNuSeg/CoNSeP audit is stable.
 
 ## Open Decisions
 

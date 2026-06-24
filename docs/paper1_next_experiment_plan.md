@@ -115,15 +115,101 @@ Metrics:
 
 ## Initial Dataset Recommendation
 
-Start with the existing pathology branch if probability maps and masks are
-readily available. It is the fastest route to test whether SFRM features detect:
+Start with the existing pathology branch, specifically **MoNuSeg test patches**.
+This is the fastest route because the workspace already contains trained
+checkpoints and per-patch evaluation metrics under:
+
+```text
+D:\paper_MedIA Vol. 107–113\outputs\confounder_prompting\monuseg_split_point_seed42
+D:\paper_MedIA Vol. 107–113\outputs\confounder_prompting\monuseg_split_contrastive_w005_seed42
+```
+
+Probability maps are not currently stored as raw arrays in those run folders,
+but they can be regenerated from the saved checkpoints and existing dataset
+loader. This is preferable to starting with a new dataset because it avoids
+turning Experiment 0 into a data-engineering project.
+
+MoNuSeg is suitable for the first 50-100 sample audit because it contains:
 
 - touching-object failures;
 - boundary leakage;
 - false-positive confounder regions;
 - object fragmentation.
 
-Then add one non-pathology dataset only after the feature audit is stable.
+### Dataset Staging
+
+1. **Stage 0: MoNuSeg feature-discrimination audit**
+   - purpose: validate whether SFRM features separate good and bad predictions;
+   - sample size: start with 50-100 patches, then expand to the full test split;
+   - outputs: feature table, UMAP/t-SNE, Mann-Whitney tests, feature AUROC.
+
+2. **Stage 1: CoNSeP replication**
+   - purpose: verify that signals persist in a denser, more heterogeneous
+     nuclei dataset;
+   - expected value: stronger object-level failure analysis using AJI/PQ.
+
+3. **Stage 2: one non-pathology dataset**
+   - candidate: BraTS/FeTS if reusable predictions are available; otherwise a
+     simpler Medical Segmentation Decathlon dataset;
+   - purpose: show that SFRM is not only a pathology-specific framework.
+
+Do not start with LiTS/BraTS unless prediction/probability maps are already
+available. For Paper 1, the bottleneck should be validating the reliability
+framework, not rebuilding a segmentation training stack.
+
+## Visualization Plan for Experiment 0
+
+### Figure A: Feature separability map
+
+- UMAP or t-SNE of normalized SFRM features;
+- color by good/bad case label;
+- shape by failure type if available;
+- annotate the overlap region as the reliability gray zone.
+
+### Figure B: Feature impact radar
+
+For each feature family, report normalized discriminability:
+
+- univariate AUROC;
+- absolute Spearman correlation with Dice/HD95/boundary Dice;
+- group-effect size.
+
+The radar should compare:
+
+- global entropy baseline;
+- boundary-risk family;
+- uncertainty-cluster family;
+- topology-risk family;
+- anatomical consistency family;
+- feature-ambiguity family.
+
+### Figure C: Gray-zone diagnostic matrix
+
+Four quadrants:
+
+- high Dice / low SFRM risk;
+- high Dice / high SFRM risk;
+- low Dice / low SFRM risk;
+- low Dice / high SFRM risk.
+
+The most important cases are:
+
+- high Dice / high SFRM risk: global Dice looks acceptable but local critical
+  failure may exist;
+- low Dice / low SFRM risk: failure may be diffuse, label ambiguous, or outside
+  the currently modeled failure families.
+
+### Figure D: Fixed review-budget curve
+
+At top 5%, 10%, and 20% reviewed cases, compare:
+
+- random review;
+- mean entropy;
+- max entropy;
+- foreground entropy;
+- SFRM risk.
+
+Report critical-error recall and accepted bad-case reduction.
 
 ## Stop Criteria
 
@@ -141,4 +227,3 @@ Proceed if:
 - leakage-free SFRM features improve AUROC/AUPRC over global uncertainty;
 - the review-budget simulation captures more critical errors at 10% review
   budget.
-
