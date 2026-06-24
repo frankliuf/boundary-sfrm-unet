@@ -15,6 +15,11 @@
 - Corrected an important protocol issue: false-positive and false-negative
   regions require ground truth and must not be used as deployable predictor
   features. They are evaluation/training targets only.
+- Integrated expert feedback into the Paper 1 strategy: anatomical/topological
+  consistency, calibration, human-review budget simulation, multicollinearity
+  audit, and inter-observer ambiguity discussion.
+- Set the next execution decision: run feature-discrimination validation before
+  training the full reliability predictor.
 
 ## Open Decisions
 

@@ -183,12 +183,20 @@ For each image or volume:
      connected-component counts;
    - captures merge/split errors and object integrity failures.
 
-4. **Feature-ambiguity region**
+4. **Anatomical/topological consistency region**
+   - disconnected components in anatomically implausible locations;
+   - abnormal object counts or spatial distribution;
+   - coarse multi-scale topology instability, such as components that appear or
+     disappear under mild morphological opening/closing;
+   - optional persistent-homology-inspired summaries if implementation remains
+     lightweight.
+
+5. **Feature-ambiguity region**
    - frozen feature neighborhoods similar to target or boundary prototypes but
      spatially inconsistent with confident prediction;
    - captures visually plausible confounders.
 
-5. **Image-quality/artifact-risk region**
+6. **Image-quality/artifact-risk region**
    - blur, low contrast, staining artifacts, scanner noise, or motion-like
      degradation;
    - optional in Paper 1 unless easy to compute.
@@ -222,6 +230,20 @@ Start simple:
 Avoid a heavy neural predictor in Paper 1 unless simple models fail. The point
 is to prove region structure matters, not to hide the result inside another
 network.
+
+### Calibration
+
+The reliability score should be interpretable as risk, not only as a ranking
+score. After the initial predictor is trained, evaluate and calibrate its
+probability output using:
+
+- Platt scaling;
+- isotonic regression;
+- temperature scaling for logit-style scores;
+- calibration curves and expected calibration error.
+
+Calibration should be reported separately from discrimination. A model can rank
+bad cases well but still produce poorly calibrated risk probabilities.
 
 ## Baselines
 
@@ -395,12 +417,74 @@ Remove one region type at a time:
 
 - no boundary;
 - no topology;
+- no anatomical/topological consistency;
 - no uncertainty cluster;
 - no feature ambiguity.
 
 Target:
 
 - show which medical failure mode each region family captures.
+
+### Experiment 5: Human-review budget simulation
+
+Simulate a clinical review setting where only a fixed percentage of cases or
+regions can be manually reviewed.
+
+Compare review policies:
+
+- random review;
+- lowest global confidence;
+- highest mean entropy;
+- highest TTA disagreement;
+- highest SFRM risk score.
+
+Budgets:
+
+- top 5%;
+- top 10%;
+- top 20%.
+
+Metrics:
+
+- critical-error recall at fixed review budget;
+- reduction in accepted bad cases;
+- selective segmentation risk-coverage curve;
+- number of boundary/object-level failures captured per reviewed case.
+
+This experiment should become one of the main translational figures because it
+connects SFRM to human-in-the-loop clinical quality control.
+
+## Feature Audit Before Predictor Training
+
+Before building the final reliability predictor, run a feature-discrimination
+audit:
+
+1. compute each SFRM feature for all cases;
+2. split cases into good and bad prediction groups using Dice, HD95, boundary
+   Dice, and object-level metrics;
+3. compare feature distributions between groups;
+4. compute univariate AUROC/AUPRC for each feature;
+5. compute feature correlation matrix;
+6. remove or merge highly collinear features;
+7. fit Lasso/logistic regression as the first interpretable model.
+
+This audit prevents the paper from becoming a black-box predictor and makes it
+clear which failure-region mechanisms are genuinely informative.
+
+## Inter-Observer and Label Ambiguity
+
+The ground-truth mask should be treated as the best available reference, not as
+absolute truth. In ambiguous medical boundaries, prediction-label disagreement
+may reflect annotation uncertainty rather than a pure model failure.
+
+If multiple annotations are unavailable, discuss this explicitly as a
+limitation. If multiple annotations are available in any selected dataset,
+separate:
+
+- true model failure;
+- disagreement within the range of annotator variability;
+- ambiguous boundary cases where reliability should be low even if one Dice
+  score is acceptable.
 
 ## Manuscript Story
 
@@ -467,4 +551,3 @@ If the first version is mainly benchmark/protocol:
   survey", arXiv:2404.18279.
 - Local CVPR 2026 highlighted-paper notes on Spatial-SAM, Similarity-as-
   Evidence, Keep It Frozen, and CARE.
-
