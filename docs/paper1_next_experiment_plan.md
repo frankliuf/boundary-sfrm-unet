@@ -33,6 +33,37 @@ A feature-discrimination audit isolates the foundation question:
 - optional uncertainty maps;
 - optional frozen feature maps.
 
+### Cache Contract
+
+Every cached sample must separate deployable features from audit-only
+evaluation metrics:
+
+```python
+cache_entry = {
+    "patch_id": "...",
+    "deployable_features": {
+        "boundary_risk": {},
+        "uncertainty_cluster": {},
+        "topology_risk": {},
+        "anatomical_topological_consistency": {},
+        "feature_ambiguity": {},
+    },
+    "evaluation_metrics": {
+        "dice": None,
+        "boundary_dice": None,
+        "lecr_uncertainty": None,
+        "lecr_boundary_error": None,
+    },
+}
+```
+
+The CSV feature table should use prefixes:
+
+- `feat__...` for deployable predictor inputs;
+- `eval__...` for labels, diagnostics, and audit-only quantities.
+
+This naming convention makes leakage checks simple and reviewable.
+
 ### Leakage Rule
 
 Ground truth must not be used to compute predictor features. It can only define:
@@ -40,6 +71,39 @@ Ground truth must not be used to compute predictor features. It can only define:
 - Dice / HD95 / boundary Dice / AJI / PQ;
 - bad-case labels;
 - true error regions for localization evaluation.
+- LECR and other gray-zone diagnostics.
+
+### LECR Definition
+
+Local Error Contribution Ratio is an audit metric, not a deployable feature.
+
+Let:
+
+```text
+Omega_error = prediction XOR ground_truth
+```
+
+Two first-stage variants are used:
+
+- `lecr_uncertainty`: uncertainty mass inside `Omega_error` divided by total
+  uncertainty mass;
+- `lecr_boundary_error`: fraction of error pixels that lie inside the union of
+  predicted and ground-truth boundary bands.
+
+These metrics help diagnose gray-zone cases, especially high-Dice predictions
+with localized boundary or touching-object failures.
+
+### Feature Stability
+
+For Stage 0, stability is approximated without retraining:
+
+- threshold sensitivity over probability thresholds 0.45, 0.50, and 0.55;
+- morphology residuals after mild opening and closing;
+- variance of connected-component count, foreground area, and Euler number
+  under these perturbations.
+
+If a feature is unstable under mild perturbations, it should not be trusted as a
+reliability signal.
 
 ### Feature Families
 

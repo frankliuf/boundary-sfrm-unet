@@ -1,0 +1,407 @@
+{
+  "features_csv": "experiments\\summaries\\stage0_monuseg_proto_seed42_features_full.csv",
+  "n_rows": 168,
+  "n_features": 28,
+  "labels": {
+    "bad_dice_lt_0.65": {
+      "positives": 31,
+      "negatives": 137
+    },
+    "low_boundary_dice_lt_median": {
+      "positives": 84,
+      "negatives": 84
+    },
+    "high_error_ge_q0.75": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "low_boundary_dice_le_q25": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "high_boundary_error_ge_q0.75": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "high_lecr_boundary_ge_q0.75": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "high_lecr_uncertainty_ge_q0.75": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "gray_high_dice_high_boundary_error": {
+      "positives": 20,
+      "negatives": 148
+    }
+  },
+  "top_auc": [
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__boundary_risk__boundary_high_entropy_frac",
+      "auc_raw": 0.017567567567567565,
+      "auc_directional": 0.9824324324324324,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 52.0,
+      "mannwhitney_p": 2.7173891436972952e-12
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__topology_risk__threshold_area_frac_std",
+      "auc_raw": 0.9787162162162163,
+      "auc_directional": 0.9787162162162163,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2897.0,
+      "mannwhitney_p": 3.98423277199892e-12
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__uncertainty_cluster__high_uncertainty_small_component_count",
+      "auc_raw": 0.9733108108108108,
+      "auc_directional": 0.9733108108108108,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2881.0,
+      "mannwhitney_p": 6.3323484434127885e-12
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__uncertainty_cluster__high_uncertainty_component_count",
+      "auc_raw": 0.9722972972972973,
+      "auc_directional": 0.9722972972972973,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2878.0,
+      "mannwhitney_p": 7.412990639792371e-12
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__boundary_risk__pred_boundary_area_frac",
+      "auc_raw": 0.9706081081081082,
+      "auc_directional": 0.9706081081081082,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2873.0,
+      "mannwhitney_p": 9.091600435415561e-12
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__global_uncertainty__mean_margin_uncertainty",
+      "auc_raw": 0.9675675675675676,
+      "auc_directional": 0.9675675675675676,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2864.0,
+      "mannwhitney_p": 1.2345295055783572e-11
+    },
+    {
+      "label": "bad_dice_lt_0.65",
+      "feature": "feat__boundary_risk__boundary_mean_entropy",
+      "auc_raw": 0.9670355545090653,
+      "auc_directional": 0.9670355545090653,
+      "positives": 31,
+      "negatives": 137,
+      "mannwhitney_u": 4107.0,
+      "mannwhitney_p": 5.134039772168846e-16
+    },
+    {
+      "label": "bad_dice_lt_0.65",
+      "feature": "feat__boundary_risk__boundary_mean_margin_uncertainty",
+      "auc_raw": 0.9660937132093242,
+      "auc_directional": 0.9660937132093242,
+      "positives": 31,
+      "negatives": 137,
+      "mannwhitney_u": 4103.0,
+      "mannwhitney_p": 5.872830119603875e-16
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__global_uncertainty__foreground_area_frac",
+      "auc_raw": 0.960472972972973,
+      "auc_directional": 0.960472972972973,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2843.0,
+      "mannwhitney_p": 2.5018571585109754e-11
+    },
+    {
+      "label": "bad_dice_lt_0.65",
+      "feature": "feat__boundary_risk__boundary_high_entropy_frac",
+      "auc_raw": 0.9406639981163174,
+      "auc_directional": 0.9406639981163174,
+      "positives": 31,
+      "negatives": 137,
+      "mannwhitney_u": 3995.0,
+      "mannwhitney_p": 2.0047082218318005e-14
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__topology_risk__threshold_euler_std",
+      "auc_raw": 0.937331081081081,
+      "auc_directional": 0.937331081081081,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2774.5,
+      "mannwhitney_p": 2.3187313394556948e-10
+    },
+    {
+      "label": "bad_dice_lt_0.65",
+      "feature": "feat__topology_risk__mean_component_area_frac",
+      "auc_raw": 0.06828349423122204,
+      "auc_directional": 0.931716505768778,
+      "positives": 31,
+      "negatives": 137,
+      "mannwhitney_u": 290.0,
+      "mannwhitney_p": 6.632481683471988e-14
+    },
+    {
+      "label": "low_boundary_dice_le_q25",
+      "feature": "feat__boundary_risk__boundary_high_entropy_frac",
+      "auc_raw": 0.9312169312169312,
+      "auc_directional": 0.9312169312169312,
+      "positives": 42,
+      "negatives": 126,
+      "mannwhitney_u": 4928.0,
+      "mannwhitney_p": 6.42554717271582e-17
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__topology_risk__threshold_component_count_std",
+      "auc_raw": 0.9307432432432432,
+      "auc_directional": 0.9307432432432432,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2755.0,
+      "mannwhitney_p": 4.295987904292719e-10
+    },
+    {
+      "label": "bad_dice_lt_0.65",
+      "feature": "feat__global_uncertainty__foreground_area_frac",
+      "auc_raw": 0.0807628914527902,
+      "auc_directional": 0.9192371085472097,
+      "positives": 31,
+      "negatives": 137,
+      "mannwhitney_u": 343.0,
+      "mannwhitney_p": 3.382129300171358e-13
+    },
+    {
+      "label": "high_boundary_error_ge_q0.75",
+      "feature": "feat__global_uncertainty__mean_margin_uncertainty",
+      "auc_raw": 0.9168556311413454,
+      "auc_directional": 0.9168556311413454,
+      "positives": 42,
+      "negatives": 126,
+      "mannwhitney_u": 4852.0,
+      "mannwhitney_p": 6.543155879012551e-16
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__topology_risk__largest_component_area_frac",
+      "auc_raw": 0.914864864864865,
+      "auc_directional": 0.914864864864865,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2708.0,
+      "mannwhitney_p": 1.8316080344310923e-09
+    },
+    {
+      "label": "high_boundary_error_ge_q0.75",
+      "feature": "feat__topology_risk__threshold_area_frac_std",
+      "auc_raw": 0.9094860166288737,
+      "auc_directional": 0.9094860166288737,
+      "positives": 42,
+      "negatives": 126,
+      "mannwhitney_u": 4813.0,
+      "mannwhitney_p": 2.089786573823266e-15
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__global_uncertainty__mean_entropy",
+      "auc_raw": 0.9003378378378378,
+      "auc_directional": 0.9003378378378378,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2665.0,
+      "mannwhitney_p": 6.574428590456203e-09
+    },
+    {
+      "label": "gray_high_dice_high_boundary_error",
+      "feature": "feat__topology_risk__component_area_cv",
+      "auc_raw": 0.8935810810810811,
+      "auc_directional": 0.8935810810810811,
+      "positives": 20,
+      "negatives": 148,
+      "mannwhitney_u": 2645.0,
+      "mannwhitney_p": 1.1737690417064704e-08
+    }
+  ],
+  "top_spearman": [
+    {
+      "target": "eval__dice",
+      "feature": "feat__boundary_risk__boundary_mean_margin_uncertainty",
+      "spearman_rho": -0.7661405844270885,
+      "spearman_abs": 0.7661405844270885,
+      "spearman_p": 1.0751615010207198e-33,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__global_uncertainty__mean_margin_uncertainty",
+      "spearman_rho": 0.7409804699439062,
+      "spearman_abs": 0.7409804699439062,
+      "spearman_p": 1.628617437016608e-30,
+      "n": 168
+    },
+    {
+      "target": "eval__dice",
+      "feature": "feat__boundary_risk__boundary_mean_entropy",
+      "spearman_rho": -0.7382352792302126,
+      "spearman_abs": 0.7382352792302126,
+      "spearman_p": 3.4398357283292576e-30,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__boundary_risk__pred_boundary_area_frac",
+      "spearman_rho": 0.7260842550962171,
+      "spearman_abs": 0.7260842550962171,
+      "spearman_p": 8.439414344096967e-29,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__topology_risk__threshold_area_frac_std",
+      "spearman_rho": 0.687933529349003,
+      "spearman_abs": 0.687933529349003,
+      "spearman_p": 6.98002609039961e-25,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__global_uncertainty__foreground_area_frac",
+      "spearman_rho": 0.6779100365901234,
+      "spearman_abs": 0.6779100365901234,
+      "spearman_p": 5.956310705243721e-24,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__global_uncertainty__mean_entropy",
+      "spearman_rho": 0.6593777740659738,
+      "spearman_abs": 0.6593777740659738,
+      "spearman_p": 2.528795458674249e-22,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_dice",
+      "feature": "feat__boundary_risk__boundary_mean_entropy",
+      "spearman_rho": -0.6553140548994995,
+      "spearman_abs": 0.6553140548994995,
+      "spearman_p": 5.554468664649757e-22,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__uncertainty_cluster__high_uncertainty_threshold",
+      "spearman_rho": 0.643381845837293,
+      "spearman_abs": 0.643381845837293,
+      "spearman_p": 5.228254424151288e-21,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__boundary_risk__boundary_high_entropy_frac",
+      "spearman_rho": -0.6319672354155396,
+      "spearman_abs": 0.6319672354155396,
+      "spearman_p": 4.077175217853432e-20,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_dice",
+      "feature": "feat__boundary_risk__boundary_mean_margin_uncertainty",
+      "spearman_rho": -0.6307039344809958,
+      "spearman_abs": 0.6307039344809958,
+      "spearman_p": 5.091076232050169e-20,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__topology_risk__threshold_euler_std",
+      "spearman_rho": 0.6248251153568541,
+      "spearman_abs": 0.6248251153568541,
+      "spearman_p": 1.4121383868334872e-19,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__uncertainty_cluster__high_uncertainty_small_component_count",
+      "spearman_rho": 0.6152239618152205,
+      "spearman_abs": 0.6152239618152205,
+      "spearman_p": 7.138968070382985e-19,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__uncertainty_cluster__high_uncertainty_component_count",
+      "spearman_rho": 0.6147318329019511,
+      "spearman_abs": 0.6147318329019511,
+      "spearman_p": 7.745726335856458e-19,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__topology_risk__threshold_component_count_std",
+      "spearman_rho": 0.5974907786034723,
+      "spearman_abs": 0.5974907786034723,
+      "spearman_p": 1.236345524246397e-17,
+      "n": 168
+    },
+    {
+      "target": "eval__dice",
+      "feature": "feat__boundary_risk__boundary_high_entropy_frac",
+      "spearman_rho": -0.5754172129114553,
+      "spearman_abs": 0.5754172129114553,
+      "spearman_p": 3.395351544750403e-16,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_error_area_frac",
+      "feature": "feat__topology_risk__largest_component_area_frac",
+      "spearman_rho": 0.5719423390755874,
+      "spearman_abs": 0.5719423390755874,
+      "spearman_p": 5.592956452750919e-16,
+      "n": 168
+    },
+    {
+      "target": "eval__boundary_dice",
+      "feature": "feat__boundary_risk__boundary_high_entropy_frac",
+      "spearman_rho": -0.5648027697774359,
+      "spearman_abs": 0.5648027697774359,
+      "spearman_p": 1.531352509570999e-15,
+      "n": 168
+    },
+    {
+      "target": "eval__dice",
+      "feature": "feat__topology_risk__mean_component_area_frac",
+      "spearman_rho": 0.5643294982309263,
+      "spearman_abs": 0.5643294982309263,
+      "spearman_p": 1.635691344964147e-15,
+      "n": 168
+    },
+    {
+      "target": "eval__dice",
+      "feature": "feat__global_uncertainty__foreground_area_frac",
+      "spearman_rho": 0.555134869736436,
+      "spearman_abs": 0.555134869736436,
+      "spearman_p": 5.7665137150116925e-15,
+      "n": 168
+    }
+  ],
+  "outputs": {
+    "univariate_auroc": "experiments\\summaries\\stage0_audit_monuseg_proto_seed42\\univariate_auroc.csv",
+    "spearman_correlations": "experiments\\summaries\\stage0_audit_monuseg_proto_seed42\\spearman_correlations.csv"
+  }
+}

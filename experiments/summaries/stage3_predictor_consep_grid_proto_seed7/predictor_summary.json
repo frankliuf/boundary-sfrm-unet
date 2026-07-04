@@ -1,0 +1,47 @@
+{
+  "dataset": "consep",
+  "model": "prototype_seed7",
+  "features_csv": "experiments\\summaries\\stage0_consep_grid_proto_seed7_features_full.csv",
+  "n_rows": 504,
+  "n_sources": 14,
+  "feature_sets": {
+    "global_features": 5,
+    "sfrm_features": 23,
+    "all_deployable_features": 28
+  },
+  "labels": {
+    "bad_dice_lt_0.65": {
+      "positives": 243,
+      "negatives": 261
+    },
+    "low_boundary_dice_le_q25": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "high_error_ge_q0.75": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "high_boundary_error_ge_q0.75": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "high_lecr_boundary_ge_q0.75": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "high_lecr_uncertainty_ge_q0.75": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "gray_high_dice_high_boundary_error": {
+      "positives": 91,
+      "negatives": 413
+    }
+  },
+  "outputs": {
+    "metrics": "experiments\\summaries\\stage3_predictor_consep_grid_proto_seed7\\predictor_review_budget_metrics.csv",
+    "discriminability": "experiments\\summaries\\stage3_predictor_consep_grid_proto_seed7\\predictor_discriminability.csv",
+    "predictions": "experiments\\summaries\\stage3_predictor_consep_grid_proto_seed7\\oof_predictions.csv"
+  }
+}

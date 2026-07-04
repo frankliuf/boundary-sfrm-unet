@@ -1,0 +1,1 @@
+epoch,train_loss,baseline_dice,repaired_dice,delta_dice,baseline_boundary_dice,repaired_boundary_dice,delta_boundary_dice,baseline_aji,repaired_aji,delta_aji,baseline_pq,repaired_pq,delta_pq,delta_high_risk_dice,delta_low_risk_dice,delta_confounder_fpr

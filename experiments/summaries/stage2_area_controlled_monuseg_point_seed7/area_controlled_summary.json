@@ -1,0 +1,49 @@
+{
+  "dataset": "monuseg",
+  "model": "point_seed7",
+  "features_csv": "experiments\\summaries\\stage0_monuseg_point_seed7_features_full.csv",
+  "n_rows": 168,
+  "area_bins": 5,
+  "bin_counts": {
+    "0": 34,
+    "1": 33,
+    "2": 34,
+    "3": 33,
+    "4": 34
+  },
+  "labels": {
+    "bad_dice_lt_0.65": {
+      "positives": 19,
+      "negatives": 149
+    },
+    "low_boundary_dice_le_q25": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "high_error_ge_q0.75": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "high_boundary_error_ge_q0.75": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "high_lecr_boundary_ge_q0.75": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "high_lecr_uncertainty_ge_q0.75": {
+      "positives": 42,
+      "negatives": 126
+    },
+    "gray_high_dice_high_boundary_error": {
+      "positives": 20,
+      "negatives": 148
+    }
+  },
+  "outputs": {
+    "metrics": "experiments\\summaries\\stage2_area_controlled_monuseg_point_seed7\\area_controlled_review_metrics.csv",
+    "discriminability": "experiments\\summaries\\stage2_area_controlled_monuseg_point_seed7\\area_controlled_score_discriminability.csv",
+    "bins": "experiments\\summaries\\stage2_area_controlled_monuseg_point_seed7\\area_bins.csv"
+  }
+}

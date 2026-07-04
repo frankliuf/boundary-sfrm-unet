@@ -1,0 +1,12 @@
+{
+  "dataset": "fets",
+  "model": "single_sites18_19_20",
+  "features_csv": "experiments\\summaries\\stage0_fets_single_sites18_19_20_features_full.csv",
+  "predictions_csv": "experiments\\summaries\\stage3_predictor_fets_single_sites18_19_20\\oof_predictions.csv",
+  "budget": 0.1,
+  "bootstrap_iters": 2000,
+  "n_sources": 44,
+  "outputs": {
+    "comparisons": "experiments\\summaries\\stage4_bootstrap_fets_single_sites18_19_20\\source_bootstrap_comparisons.csv"
+  }
+}

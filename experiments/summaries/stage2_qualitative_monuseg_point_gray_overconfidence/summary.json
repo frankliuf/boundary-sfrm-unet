@@ -1,0 +1,19 @@
+{
+  "dataset": "MoNuSeg",
+  "model": "point_seed42",
+  "features_csv": "experiments\\summaries\\stage0_monuseg_point_seed42_features_full.csv",
+  "maps_dir": "experiments\\maps\\stage0_monuseg_point_seed42_full",
+  "label": "gray_high_dice_high_boundary_error",
+  "sfrm_score": "boundary_overconfidence_score",
+  "global_score": "global_mean_entropy",
+  "review_fraction": 0.1,
+  "review_count": 17,
+  "positive_cases": 8,
+  "category_counts": {
+    "sfrm_hit_global_miss": 5,
+    "global_hit_sfrm_miss": 0,
+    "both_hit": 0,
+    "both_miss": 3
+  },
+  "rendered_sfrm_hit_global_miss": 5
+}

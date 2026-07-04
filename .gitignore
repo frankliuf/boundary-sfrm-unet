@@ -13,7 +13,15 @@ env/
 # Data and large outputs
 data/raw/
 data/processed/
+data/**/*.png
+data/**/*.jpg
+data/**/*.jpeg
 experiments/runs/
+experiments/maps/
+experiments/ablation_channel_masking_smoke/
+experiments/boundary_sfrm_runs/smoke_*/
+experiments/boundary_sfrm_runs/startup_*/
+experiments/repair_runs/smoke_*/
 outputs/
 *.nii
 *.nii.gz
@@ -27,7 +35,20 @@ outputs/
 *.pt
 *.ckpt
 
+# Manuscript builds and large vector/raster exports
+manuscript/
+figures/**/*.pdf
+figures/**/*.svg
+figures/paper1/sfrm_unet_architecture[1-5].png
+*.pdf
+*.docx
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex*
+
 # Office/PDF exports
 ~$*
 *.tmp
-

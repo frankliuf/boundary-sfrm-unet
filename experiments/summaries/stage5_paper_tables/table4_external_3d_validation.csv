@@ -1,0 +1,5 @@
+endpoint,sfrm_predictor,comparator,sfrm_recall,comparator_recall,recall_diff,ci95,ci_excludes_zero,positives
+high_lecr_boundary_ge_q0.75,lasso_logistic_l1::sfrm_features,predefined::global_mean_entropy,0.2727,0.0000,0.2727,"[0.0000, 0.5000]",False,11
+low_boundary_dice_le_q25,logistic_l2::sfrm_features,predefined::global_max_entropy,0.3636,0.0000,0.3636,"[0.1818, 0.6667]",True,11
+low_boundary_dice_le_q25,logistic_l2::sfrm_features,logistic_l2::global_features,0.3636,0.1818,0.1818,"[-0.0833, 0.4444]",False,11
+high_lecr_boundary_ge_q0.75,lasso_logistic_l1::sfrm_features,logistic_l2::global_features,0.2727,0.0909,0.1818,"[-0.0835, 0.4000]",False,11

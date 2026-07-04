@@ -1,0 +1,49 @@
+{
+  "dataset": "consep",
+  "model": "prototype_seed123",
+  "features_csv": "experiments\\summaries\\stage0_consep_grid_proto_seed123_features_full.csv",
+  "n_rows": 504,
+  "area_bins": 5,
+  "bin_counts": {
+    "0": 101,
+    "1": 101,
+    "2": 100,
+    "3": 101,
+    "4": 101
+  },
+  "labels": {
+    "bad_dice_lt_0.65": {
+      "positives": 330,
+      "negatives": 174
+    },
+    "low_boundary_dice_le_q25": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "high_error_ge_q0.75": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "high_boundary_error_ge_q0.75": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "high_lecr_boundary_ge_q0.75": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "high_lecr_uncertainty_ge_q0.75": {
+      "positives": 126,
+      "negatives": 378
+    },
+    "gray_high_dice_high_boundary_error": {
+      "positives": 71,
+      "negatives": 433
+    }
+  },
+  "outputs": {
+    "metrics": "experiments\\summaries\\stage2_area_controlled_consep_grid_proto_seed123\\area_controlled_review_metrics.csv",
+    "discriminability": "experiments\\summaries\\stage2_area_controlled_consep_grid_proto_seed123\\area_controlled_score_discriminability.csv",
+    "bins": "experiments\\summaries\\stage2_area_controlled_consep_grid_proto_seed123\\area_bins.csv"
+  }
+}

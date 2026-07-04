@@ -1,0 +1,69 @@
+{
+  "dataset": "consep",
+  "checkpoint": "D:\\paper_MedIA Vol. 107\u2013113\\failure_region_reliability\\experiments\\boundary_sfrm_runs\\consep_fullsup_learned_failure_head_v3_teacher10_seed42\\best_boundary_model.pt",
+  "variant": "learned_failure_head",
+  "sample_count": 180,
+  "channel_order": [
+    "P",
+    "H(P)",
+    "F_b",
+    "F_s"
+  ],
+  "results": {
+    "full": {
+      "dice": 0.7530470986175632,
+      "boundary_dice": 0.6411021987890025,
+      "aji": 0.3870974104724392,
+      "pq": 0.31362576215476323,
+      "confounder_fpr": 0.4874964066075241,
+      "delta_boundary_vs_full": 0.0,
+      "delta_aji_vs_full": 0.0,
+      "delta_pq_vs_full": 0.0,
+      "delta_fpr_vs_full": 0.0
+    },
+    "drop_P": {
+      "dice": 0.726307551125478,
+      "boundary_dice": 0.627517871399898,
+      "aji": 0.4280191689717968,
+      "pq": 0.30399654960312955,
+      "confounder_fpr": 0.39526963186422454,
+      "delta_boundary_vs_full": -0.013584327389104534,
+      "delta_aji_vs_full": 0.04092175849935764,
+      "delta_pq_vs_full": -0.009629212551633681,
+      "delta_fpr_vs_full": -0.09222677474329954
+    },
+    "drop_H": {
+      "dice": 0.7512672817643775,
+      "boundary_dice": 0.6421703975337825,
+      "aji": 0.3925102420314199,
+      "pq": 0.3218703823935023,
+      "confounder_fpr": 0.46857817941650604,
+      "delta_boundary_vs_full": 0.0010681987447799246,
+      "delta_aji_vs_full": 0.005412831558980702,
+      "delta_pq_vs_full": 0.008244620238739064,
+      "delta_fpr_vs_full": -0.018918227191018044
+    },
+    "drop_Fb": {
+      "dice": 0.751903721535909,
+      "boundary_dice": 0.6360674247822863,
+      "aji": 0.3760053013090588,
+      "pq": 0.3064238984850078,
+      "confounder_fpr": 0.504172242036062,
+      "delta_boundary_vs_full": -0.005034774006716258,
+      "delta_aji_vs_full": -0.011092109163380381,
+      "delta_pq_vs_full": -0.007201863669755448,
+      "delta_fpr_vs_full": 0.016675835428537955
+    },
+    "drop_Fs": {
+      "dice": 0.7519984485080784,
+      "boundary_dice": 0.6400290077320613,
+      "aji": 0.3883975153267166,
+      "pq": 0.31307740090962144,
+      "confounder_fpr": 0.48726440637591734,
+      "delta_boundary_vs_full": -0.0010731910569412584,
+      "delta_aji_vs_full": 0.0013001048542774507,
+      "delta_pq_vs_full": -0.000548361245141793,
+      "delta_fpr_vs_full": -0.00023200023160674377
+    }
+  }
+}

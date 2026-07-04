@@ -1,0 +1,12 @@
+{
+  "dataset": "consep",
+  "model": "point_seed7",
+  "features_csv": "experiments\\summaries\\stage0_consep_grid_point_seed7_features_full.csv",
+  "predictions_csv": "experiments\\summaries\\stage3_predictor_consep_grid_point_seed7\\oof_predictions.csv",
+  "budget": 0.1,
+  "bootstrap_iters": 2000,
+  "n_sources": 14,
+  "outputs": {
+    "comparisons": "experiments\\summaries\\stage4_bootstrap_consep_grid_point_seed7\\source_bootstrap_comparisons.csv"
+  }
+}

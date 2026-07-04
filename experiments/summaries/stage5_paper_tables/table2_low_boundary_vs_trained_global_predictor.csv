@@ -1,0 +1,5 @@
+dataset,model_family,endpoint,n_seeds,sfrm_recall_mean,comparator_recall_mean,recall_diff_mean,recall_diff_min,recall_diff_max,positive_seeds,source_bootstrap_significant_seeds
+consep,point,low_boundary_dice_le_q25,3,0.2434,0.2249,0.0185,-0.0476,0.0635,2/3,0/3
+consep,proto,low_boundary_dice_le_q25,3,0.2989,0.2407,0.0582,-0.0079,0.1746,2/3,1/3
+monuseg,point,low_boundary_dice_le_q25,3,0.3492,0.3175,0.0317,-0.0238,0.1190,1/3,0/3
+monuseg,proto,low_boundary_dice_le_q25,3,0.3016,0.2222,0.0794,0.0238,0.1190,3/3,0/3
