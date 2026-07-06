@@ -152,9 +152,12 @@ def _pick_case_relaxed(rows: list[dict[str, str]]) -> dict[str, str]:
     return scored[0][1]
 
 
-def _pick_failure_case(rows: list[dict[str, str]]) -> dict[str, str]:
+def _pick_failure_case(rows: list[dict[str, str]], exclude_ids: set[str] | None = None) -> dict[str, str]:
+    exclude_ids = exclude_ids or set()
     scored: list[tuple[float, dict[str, str]]] = []
     for row in rows:
+        if row["patch_id"] in exclude_ids:
+            continue
         dd = float(row["delta_dice"])
         db = float(row["delta_boundary_dice"])
         da = float(row["delta_aji"])
@@ -165,6 +168,26 @@ def _pick_failure_case(rows: list[dict[str, str]]) -> dict[str, str]:
             scored.append((score, row))
     if not scored:
         raise RuntimeError("No suitable failure qualitative case found.")
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return scored[0][1]
+
+
+def _pick_leakage_failure_case(rows: list[dict[str, str]], exclude_ids: set[str] | None = None) -> dict[str, str]:
+    exclude_ids = exclude_ids or set()
+    scored: list[tuple[float, dict[str, str]]] = []
+    for row in rows:
+        if row["patch_id"] in exclude_ids:
+            continue
+        dd = float(row["delta_dice"])
+        db = float(row["delta_boundary_dice"])
+        da = float(row["delta_aji"])
+        dp = float(row["delta_pq"])
+        df = float(row["delta_confounder_fpr"])
+        if df > 0.06 and (db < 0.02 or da < 0.0 or dp < 0.0):
+            score = df + 0.35 * abs(min(0.0, db)) + 0.25 * abs(min(0.0, da)) + 0.25 * abs(min(0.0, dp)) + 0.15 * abs(min(0.0, dd))
+            scored.append((score, row))
+    if not scored:
+        raise RuntimeError("No suitable leakage-oriented qualitative case found.")
     scored.sort(key=lambda x: x[0], reverse=True)
     return scored[0][1]
 
@@ -234,24 +257,29 @@ def _predict_case(cfg: DatasetConfig, patch_id: str, device: torch.device) -> di
 def figure_qualitative() -> None:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     selections: list[tuple[DatasetConfig, str, dict[str, str], dict[str, np.ndarray]]] = []
+    used_patch_ids: set[str] = set()
     selection_plan = [
         (DATASETS["TNBC"], "repair"),
         (DATASETS["CryoNuSeg"], "repair"),
         (DATASETS["CoNSeP"], "repair"),
         (DATASETS["CoNSeP"], "failure"),
+        (DATASETS["CoNSeP"], "leakage"),
     ]
     for cfg, mode in selection_plan:
         rows = _load_csv_rows(cfg.per_sample_csv)
         if mode == "failure":
-            row = _pick_failure_case(rows)
+            row = _pick_failure_case(rows, exclude_ids=used_patch_ids)
+        elif mode == "leakage":
+            row = _pick_leakage_failure_case(rows, exclude_ids=used_patch_ids)
         elif cfg.name == "CoNSeP":
             row = _pick_case_relaxed(rows)
         else:
             row = _pick_case(rows)
+        used_patch_ids.add(row["patch_id"])
         pred = _predict_case(cfg, row["patch_id"], device)
         selections.append((cfg, mode, row, pred))
 
-    fig, axes = plt.subplots(len(selections), 6, figsize=(18, 12.5))
+    fig, axes = plt.subplots(len(selections), 6, figsize=(18, 15.2))
     fig.patch.set_facecolor("white")
     titles = ["Image + GT", "Baseline", "Raw failure risk", "Refined", "Baseline FP/FN", "Refined FP/FN"]
     for j, title in enumerate(titles):
@@ -326,7 +354,7 @@ def figure_qualitative() -> None:
         )
 
     fig.suptitle(
-        "Boundary-SFRM-UNet qualitative panel: repair successes and a dense-scene failure case",
+        "Boundary-SFRM-UNet qualitative panel: repair successes and dense-scene failure cases",
         fontsize=16,
         fontweight="bold",
         y=0.995,

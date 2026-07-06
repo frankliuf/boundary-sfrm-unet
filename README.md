@@ -69,7 +69,7 @@ Install the CUDA build of PyTorch appropriate for the local driver when GPU trai
 
 ## Data
 
-The experiments use public pathology datasets including CryoNuSeg, CoNSeP, MoNuSeg, and TNBC. Dataset images and annotations are not redistributed. Prepare local folders containing images, semantic masks, instance maps, and confounder maps, then pass their paths explicitly to the scripts.
+The study uses public pathology datasets including CryoNuSeg, CoNSeP, MoNuSeg, and TNBC. Raw images and annotations are governed by the original dataset licenses and are therefore not redistributed in this repository. The repository instead releases the training and evaluation scripts, split-materialization utilities, experiment summaries, per-sample test outputs, and figure-generation code used to produce the reported results. Local dataset folders should contain images, semantic masks, instance maps, and confounder maps, and their paths are passed explicitly to the scripts. See [data/README.md](data/README.md) for dataset notes and download guidance.
 
 Example baseline training:
 
